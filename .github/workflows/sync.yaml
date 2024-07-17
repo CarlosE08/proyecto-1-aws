@@ -20,8 +20,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::882692629600:role/rol-carlos-prueba
-          aws-region: us-east-1
+          role-to-assume: ${{ secrets.AWS_IAM_ROL }}  
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Sync with S3
         run: aws s3 sync ./files/ s3://${{ secrets.AWS_BUCKET_NAME }}  
